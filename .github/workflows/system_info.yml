@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  Run-npm-on-Ubuntu:
+  Runner-info:
     name: Run npm on Ubuntu
     runs-on: ubuntu-latest
     steps:
       - name: Get runner information
-        uses: actions/runner@v2
+        uses: actions/runner@2.310.2
     
       - name: Print runner details
         run: |
