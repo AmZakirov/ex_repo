@@ -1,19 +1,16 @@
-name: Manual trigger
+name: System info
 
 on:
   workflow_dispatch:
 
 jobs:
-  bash-example:
+  Run-npm-on-Ubuntu:
+    name: Run npm on Ubuntu
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    
-    - name: Get system info
-      uses: actions/setup-node@v2
-      with:
-        script: |
-          echo "Operating System Details:"
-          uname -a
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm help
 
