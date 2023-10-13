@@ -8,9 +8,11 @@ jobs:
     name: Run npm on Ubuntu
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm help
+      - name: Get runner information
+        uses: actions/runner@v2
+    
+      - name: Print runner details
+        run: |
+          echo "Runner OS: ${{ steps.runner.outputs.os }}"
+          echo "Runner version: ${{ steps.runner.outputs.version }}"
 
