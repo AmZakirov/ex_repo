@@ -22,3 +22,7 @@ jobs:
           print(f"Version: {uname.version}")
           print(f"Machine: {uname.machine}")
           print(f"Processor: {uname.processor}")
+          import psutil
+          print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
+          print(f"Current CPU frequency: {psutil.cpu_freq().current}")
+          print(f"Total RAM installed: {round(psutil.virtual_memory().total/1000000000, 2)} GB")
