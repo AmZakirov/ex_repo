@@ -31,6 +31,28 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: python -m pip install --upgrade pip psutil
+        
+      - name: Hardware  specifications
+        shell: python
+        run: |
+          import os
+          import psutil
+          
+          cpu_count = os.cpu_count()
+          cpu_percent = psutil.cpu_percent(interval=1)
+          memory = psutil.virtual_memory()
+          disk = psutil.disk_usage('/')
+          
+          print("Memory and Storage Information:")
+          print(f"Total Memory: {memory.total} bytes")
+          print(f"Available Memory: {memory.available} bytes")
+          print(f"Total Disk Space: {disk.total} bytes")
+          print(f"Free Disk Space: {disk.free} bytes")
+          print("CPU Information:")
+          print(f"CPU Count: {cpu_count}")
+          print(f"CPU Usage: {cpu_percent}%")   
+          with:
+            python-version: '3.11'
 
             
   
