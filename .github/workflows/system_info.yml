@@ -24,6 +24,30 @@ jobs:
           print(f"Operating System: {os_name}")
           print(f"OS Release: {os_release}")
           print(f"OS Version: {os_version}")
+
+      - name: Install dependencies
+        shell: python
+        run: |
+          pip install psutil
+
+      - name: Hardware  specifications
+        shell: python
+        run: |
+          import os
+          import psutil
           
+          cpu_count = os.cpu_count()
+          cpu_percent = psutil.cpu_percent(interval=1)
+          memory = psutil.virtual_memory()
+          disk = psutil.disk_usage('/')
+          
+          print("Memory and Storage Information:")
+          print(f"Total Memory: {memory.total} bytes")
+          print(f"Available Memory: {memory.available} bytes")
+          print(f"Total Disk Space: {disk.total} bytes")
+          print(f"Free Disk Space: {disk.free} bytes")
+          print("CPU Information:")
+          print(f"CPU Count: {cpu_count}")
+          print(f"CPU Usage: {cpu_percent}%")               
   
 
