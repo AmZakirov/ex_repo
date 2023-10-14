@@ -4,14 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  system_info:
+  bash-example:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Gather System Information
-        run: |
-          echo "Runner OS: ${{ runner.os }}"
-          echo "Runner Labels: ${{ runner.labels }}"
-          echo "Processor Architecture: ${{ runner.architecture }}"
-          echo "Operating System: ${{ env.RUNNER_OS }}"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy contex
 
