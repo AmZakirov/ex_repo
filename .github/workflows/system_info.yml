@@ -31,6 +31,8 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: python -m pip install --upgrade pip install -U py-cpuinfo
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip install psutil
         
       - name: Hardware  specifications
         shell: python
@@ -41,6 +43,20 @@ jobs:
           info_dict = cpuinfo.get_cpu_info()
           for key, value in info_dict.items():
               print(key, ":", value) 
+
+          print("RAM info:")
+          import psutil
+          ram_info = psutil.virtual_memory()
+          print(f"Total: {ram_info.total / 1024 / 1024 / 1024:.2f} GB")
+          print(f"Available: {ram_info.available / 1024 / 1024 / 1024:.2f} GB")
+          print(f"Used: {ram_info.used / 1024 / 1024 / 1024:.2f} GB")
+
+          print("Hard disk info:")
+          disk_info = psutil.disk_usage("/")
+          print(f"Total: {disk_info.total / 1024 / 1024 / 1024:.2f} GB")
+          print(f"Used: {disk_info.used / 1024 / 1024 / 1024:.2f} GB")
+          print(f"Free: {disk_info.free / 1024 / 1024 / 1024:.2f} GB")
+          
 
             
   
