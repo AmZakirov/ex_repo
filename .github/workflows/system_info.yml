@@ -13,6 +13,5 @@ jobs:
           echo "Runner OS: ${{ runner.os }}"
           echo "Runner Labels: ${{ runner.labels }}"
           echo "Processor Architecture: ${{ runner.architecture }}"
-          echo "Total Memory (GB): ${{ runner.totalMemory / 1024 }}"
           echo "Operating System: ${{ env.RUNNER_OS }}"
 
