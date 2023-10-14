@@ -11,26 +11,19 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
-      - name: System info
+        
+      - name: Operating System Details
         shell: python
         run: |
           import platform
-          uname = platform.uname()
-          print(f"System: {uname.system}")
-          print(f"Node Name: {uname.node}")
-          print(f"Release: {uname.release}")
-          print(f"Version: {uname.version}")
-          print(f"Machine: {uname.machine}")
-          print(f"Processor: {uname.processor}")
-      - name: Hardware context
-        shell: python
-        run: |
-          pip3 install psutil
-      - name: Hardware context
-        shell: python
-        run: |
-          import psutil
-          import platform
-          print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
-          print(f"Current CPU frequency: {psutil.cpu_freq().current}")
-          print(f"Total RAM installed: {round(psutil.virtual_memory().total/1000000000, 2)} GB")
+          os_name = platform.system()
+          os_release = platform.release()
+          os_version = platform.version()
+          
+          print("Operating System Information:")
+          print(f"Operating System: {os_name}")
+          print(f"OS Release: {os_release}")
+          print(f"OS Version: {os_version}")
+          
+  
+
