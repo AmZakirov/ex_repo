@@ -15,8 +15,10 @@ jobs:
         shell: python
         run: |
           import platform
-          print('Platform processor:', platform.processor()) 
-          print('Platform architecture:', platform.architecture()) 
-          print('Machine type:', platform.machine()) 
-          print('System's network name:', platform.node()) 
-          print('Platform information:', platform.platform()) 
+          uname = platform.uname()
+          print(f"System: {uname.system}")
+          print(f"Node Name: {uname.node}")
+          print(f"Release: {uname.release}")
+          print(f"Version: {uname.version}")
+          print(f"Machine: {uname.machine}")
+          print(f"Processor: {uname.processor}")
