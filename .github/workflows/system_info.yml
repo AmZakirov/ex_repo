@@ -11,7 +11,7 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
-      - name: Hardware context
+      - name: System info
         shell: python
         run: |
           import platform
@@ -22,7 +22,15 @@ jobs:
           print(f"Version: {uname.version}")
           print(f"Machine: {uname.machine}")
           print(f"Processor: {uname.processor}")
+      - name: Hardware context
+        shell: python
+        run: |
+          pip3 install psutil
+      - name: Hardware context
+        shell: python
+        run: |
           import psutil
+          import platform
           print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
           print(f"Current CPU frequency: {psutil.cpu_freq().current}")
           print(f"Total RAM installed: {round(psutil.virtual_memory().total/1000000000, 2)} GB")
