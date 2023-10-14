@@ -4,15 +4,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  Runner-info:
-    name: Run npm on Ubuntu
+  system_info:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Get runner information
-        uses: actions/runner@2.310.2
-    
-      - name: Print runner details
+      - name: Gather System Information
         run: |
-          echo "Runner OS: ${{ steps.runner.outputs.os }}"
-          echo "Runner version: ${{ steps.runner.outputs.version }}"
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Runner Labels: ${{ runner.labels }}"
+          echo "Processor Architecture: ${{ runner.architecture }}"
+          echo "Total Memory (GB): ${{ runner.totalMemory / 1024 }}"
+          echo "Operating System: ${{ env.RUNNER_OS }}"
 
