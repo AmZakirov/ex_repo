@@ -51,8 +51,6 @@ jobs:
           print("CPU Information:")
           print(f"CPU Count: {cpu_count}")
           print(f"CPU Usage: {cpu_percent}%")   
-          with:
-            python-version: '3.11'
 
             
   
